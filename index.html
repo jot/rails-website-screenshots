@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rails Website Screenshots - 2024 Timeline</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+        .screenshot-item {
+            text-align: center;
+        }
+        .screenshot-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        #current-month {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="screenshot-grid">
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/rubyonrails.org/2024-01" alt="Ruby on Rails">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/shopify.com/2024-01" alt="Shopify">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/intercom.com/2024-01" alt="Intercom">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/doximity.com/2024-01" alt="Doximity">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/procore.com/2024-01" alt="Procore">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/github.com/2024-01" alt="GitHub">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/37signals.com/2024-01" alt="37signals">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/appsignal.com/2024-01" alt="AppSignal">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/bigbinary.com/2024-01" alt="BigBinary">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/fleetio.com/2024-01" alt="Fleetio">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/cookpad.com/2024-01" alt="Cookpad">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/renuo.ch/2024-01" alt="Renuo">
+            </div>
+            <!-- <div class="screenshot-item">
+                <img src="https://screenshotof.com/cedarcode.com/2024-01" alt="Cedarcode">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/makandra.de/2024-01" alt="makandra">
+            </div> -->
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/planetargon.com/2024-01" alt="Planet Argon">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/tablecheck.com/2024-01" alt="TableCheck">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/rubygems.org/2024-01" alt="Ruby">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://screenshotof.com/ruby-lang.org/2024-01" alt="Ruby">
+            </div>
+          </div>
+    </main>
+
+    <script>
+        const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October'];
+        const fleetioMonths = ['01', '01', '01', '01', '05', '06', '07', '08', '08', '08'];
+        const cookpadMonths = ['01', '01', '01', '01', '05', '06', '07', '08', '09', '10'];
+        const planetargonMonths = ['01', '02', '03', '04', '05', '06', '06', '06', '09', '10'];
+        const tablecheckMonths = ['03', '03', '03', '04', '04', '06', '07', '08', '08', '08'];
+        let currentMonthIndex = 0;
+
+        function updateScreenshots() {
+            const currentMonth = months[currentMonthIndex];
+            const currentMonthName = monthNames[currentMonthIndex];
+
+            const images = document.querySelectorAll('.screenshot-item img');
+            images.forEach(img => {
+                const url = new URL(img.src);
+                const path = url.pathname.split('/');
+                if (url.hostname === 'screenshotof.com') {
+                    if (path[1] === 'fleetio.com') {
+                        path[path.length - 1] = `2024-${fleetioMonths[currentMonthIndex]}`;
+                    } else if (path[1] === 'cookpad.com') {
+                        path[path.length - 1] = `2024-${cookpadMonths[currentMonthIndex]}`;
+                    } else if (path[1] === 'planetargon.com') {
+                        path[path.length - 1] = `2024-${planetargonMonths[currentMonthIndex]}`;
+                    } else if (path[1] === 'tablecheck.com') {
+                        path[path.length - 1] = `2024-${tablecheckMonths[currentMonthIndex]}`;
+                    } else {
+                        path[path.length - 1] = `2024-${currentMonth}`;
+                    }
+                    url.pathname = path.join('/');
+                    img.src = url.toString();
+                }
+            });
+
+            currentMonthIndex = (currentMonthIndex + 1) % months.length;
+        }
+
+        setInterval(updateScreenshots, 1000);
+    </script>
+</body>
+</html>
